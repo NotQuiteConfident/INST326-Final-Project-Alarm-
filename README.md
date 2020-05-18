@@ -1,2 +1,2 @@
 # INST326-Final-Project-Alarm-
-An alarm activiates at a requested time
+An alarm that activates at a requested time
