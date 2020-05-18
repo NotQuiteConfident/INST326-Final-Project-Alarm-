@@ -1,9 +1,10 @@
+# Import modules
 import datetime
 import time
 
-
+# Get desired day
 def dateEntry():
-    inDay = input("Enter the desired date for alarm (mm/dd/yyyy): ").split("/")
+    inDay = str(raw_input("Enter the desired date for alarm (mm/dd/yyyy): ")).split("/")
 
     try:
         inDay = [int(x) for x in inDay]
@@ -15,7 +16,7 @@ def dateEntry():
 
         print("Date is not in correct format.")
 
-        inDay = input("Enter the desired date for alarm (mm/dd/yyyy): ").split("/")
+        inDay = str(raw_input("Enter the desired date for alarm (mm/dd/yyyy): ")).split("/")
 
         try:
             inDay = [int(x) for x in inDay]
@@ -25,8 +26,9 @@ def dateEntry():
 
     return inDay
 
+# Get desired time
 def timeEntry():
-    inTime = input("Enter the desired time for alarm (hh:mm:ss): ").split(":")
+    inTime = str(raw_input("Enter the desired time for alarm (hh:mm:ss): ")).split(":")
 
     try:
         inTime = [int(x) for x in inTime]
@@ -38,7 +40,7 @@ def timeEntry():
 
         print("Date is not in correct format.")
 
-        inTime = input("Enter the desired time for alarm (hh:mm:ss): ").split(":")
+        inTime = str(raw_input("Enter the desired time for alarm (hh:mm:ss): ")).split(":")
 
         try:
             inTime = [int(x) for x in inTime]
@@ -50,9 +52,11 @@ def timeEntry():
 
 inDate = datetime.datetime(1900, 1, 1, 0, 0, 0, 0)
 
+# Get current time and date
 nowDate = datetime.datetime.now()
 nowDate = nowDate.replace(microsecond=0)
 
+# Date and time entry
 finalDay = dateEntry()
 finalTime = timeEntry()
 
@@ -63,6 +67,7 @@ inDate = inDate.replace(hour=finalTime[0])
 inDate = inDate.replace(minute=finalTime[1])
 inDate = inDate.replace(second=finalTime[2])
 
+# Check for valid date and time
 while inDate < datetime.datetime.now():
     print("This time is before now, enter another time.")
 
@@ -76,9 +81,11 @@ while inDate < datetime.datetime.now():
     inDate = inDate.replace(minute=finalTime[1])
     inDate = inDate.replace(second=finalTime[2])
 
+# Remove microseconds from current time
 nowDate = datetime.datetime.now()
 nowDate = nowDate.replace(microsecond=0)
 
+# Check date and time
 while nowDate != inDate:
 
     nowDate = datetime.datetime.now()
